@@ -8,15 +8,11 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function allTrains()
+    public function index()
     {
         $trains = Train::all();
-        return view('home', compact('trains'));
-    }
-
-    public function todayTrains()
-    {
         $todayTrains = Train::whereDate('orario_partenza', today())->get();
-        return view('home', compact('todayTrains'));
+        $yesterdayTrains = Train::whereDate('orario_partenza', now()->subDay())->get();
+        return view('home', compact('trains', 'todayTrains', 'yesterdayTrains'));
     }
 }

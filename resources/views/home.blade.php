@@ -9,18 +9,36 @@
 </head>
 
 <body>
-    <div class="container">
-        <h2>Tutti i treni che partono</h2>
+    <div class="container mt-5">
+        <h2 class="my-3">Tutti i treni</h2>
         <ul>
             @foreach ($trains as $train)      
-            <li>{{$train['azienda']}}</li>
+            <li>
+                <h4>{{$train['azienda']}} {{$train['codice_treno']}}</h4>
+                <h5>Partenza: {{$train['stazione_partenza']}} alle {{\Carbon\Carbon::parse($train->partenza)->format('H:i') }} - Arrivo: {{$train['stazione_arrivo']}} alle {{ \Carbon\Carbon::parse($train->orario_arrivo)->format('H:i') }}</h5>
+                <h5></h5>
+            </li>
             @endforeach
         </ul>
-        <h2>I treni che invece partono oggi</h2>
+        <h2 class="my-3">I treni che invece partono oggi</h2>
         <ul>
             @foreach ($todayTrains as $todayTrain)
-                <li>{{$todayTrain['azienda']}}</li>
+            <li>
+                <h4>{{$todayTrain['azienda']}} {{$todayTrain['codice_treno']}}</h4>
+                <h5>Partenza: {{$todayTrain['stazione_partenza']}} alle {{\Carbon\Carbon::parse($train->partenza)->format('H:i') }} - Arrivo: {{$train['stazione_arrivo']}} alle {{ \Carbon\Carbon::parse($todayTrain->orario_arrivo)->format('H:i') }}</h5>
+                <h5></h5>
+            </li>
             @endforeach
+        </ul>
+        <h2 class="my-3">I treni che invece sono partiti ieri</h2>
+        <ul>
+            @foreach ($yesterdayTrains as $yesterdayTrain)
+            <li>
+                <h4>{{$yesterdayTrain['azienda']}} {{$yesterdayTrain['codice_treno']}}</h4>
+                <h5>Partenza: {{$yesterdayTrain['stazione_partenza']}} alle {{\Carbon\Carbon::parse($train->partenza)->format('H:i') }} - Arrivo: {{$train['stazione_arrivo']}} alle {{ \Carbon\Carbon::parse($yesterdayTrain->orario_arrivo)->format('H:i') }}</h5>
+                <h5></h5>
+            </li>
+                @endforeach
         </ul>
     </div>
 </body>
