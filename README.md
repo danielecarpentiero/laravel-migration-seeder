@@ -6,4 +6,5 @@ Nel Controller è stata creata una funzione che richiama tre tipologie di filtro
  - tutti i treni 
 - i treni in partenza oggi 
  - i treni che sono partiti ieri.
+
 I dati sono stati rappresentati in pagina grazie al View.
