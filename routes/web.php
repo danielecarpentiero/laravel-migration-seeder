@@ -14,4 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
+/* tutti i treni */
+
+Route::get('/', [PageController::class, 'allTrains']);
+
+/* solamente i treni partiti oggi */
+Route::get('/', [PageController::class, 'todayTrains']);
